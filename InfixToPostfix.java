@@ -10,7 +10,11 @@ public class InfixToPostfix {
             System.out.print("Enter Infix expression: ");
             String expression = scanner.nextLine();
             
-            System.out.println("Postfix expression: "+ infixToPostfix(expression));
+            if(hasSpace(expression)){
+                System.out.println("Expression must not have spaces.");
+            } else {
+                System.out.println("Postfix expression: "+ infixToPostfix(expression));
+            }
         }
     }
     
@@ -31,10 +35,6 @@ public class InfixToPostfix {
     static String infixToPostfix(String expression){
         StringBuilder result = new StringBuilder();
         Stacks stack = new Stacks(expression.length());
-        
-        if(hasSpace(expression)){
-            return "Expression must not have spaces.";
-        }
         
         for(int i = 0; i < expression.length(); i++){
             char c = expression.charAt(i);
