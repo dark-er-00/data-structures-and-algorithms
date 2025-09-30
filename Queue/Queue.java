@@ -1,8 +1,7 @@
-
 package queues;
 
 public class Queue {
-    private int MAX_SIZE = 5;
+    private int MAX_SIZE = 3;
     private int[] queueArray = new int[MAX_SIZE];
     private int rear = -1;
     private int front = -1;
@@ -24,6 +23,9 @@ public class Queue {
     public void dequeue(){
         if(isEmpty()){
             System.out.println("Queue is empty");
+        } else if (front == MAX_SIZE - 1) {
+            front = 0;
+            rear = -1;
         } else {
             System.out.println("Element removed from queue is: "+ queueArray[front++]);
         }
@@ -45,6 +47,7 @@ public class Queue {
             for(int i = front; i <= rear; i++){
                 System.out.print(queueArray[i] + " ");
             }
+            System.out.println("");
         }
     }
     
